@@ -4,16 +4,29 @@ var taskInput = document.getElementById("new-task");//add new ask
 var addButton = document.getElementsByTagName("button")[0];//first button
 var incompleteTasksHolder = document.getElementById("incomplete-tasks");//incomplete-tasks
 var completedTasksHolder = document.getElementById("completed-tasks");//completed-tasks
+
+var createNewTaskElement= function(taskString) {
+  var listItem = document.createElement("li");
+  //input check box
+  var checkBox = document.createElement("input");
+  //label
+  var label = document.createElement("label");
+  //text input
+  var editInput = document.createElement("input");
+  //edit button
+  var editButton = document.createElement("button");
+  //delete button
+  var deleteButton = document.createElement("button");
+  //each element needs to by modified and appended
+  return listItem;
+};
+
   //add new task
 var addTask = function() {
-    //create new list item from new-task
     console.log("Add task...");
-      //input check box
-      //label
-      //text input
-      //edit button
-      //delete button
-      //each element needs to by modified and appended
+    //Create a new list item with text from #new-task
+    var listItem = createNewTaskElement("Some new task");
+    //Append listItem to incompleteTasksHolder
     };
 
 //edit existing task
