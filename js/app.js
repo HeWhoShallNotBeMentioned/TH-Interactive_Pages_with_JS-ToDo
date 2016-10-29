@@ -44,9 +44,11 @@ var addTask = function() {
     console.log("Add task...");
     //Create a new list item with text from #new-task
     var listItem = createNewTaskElement(taskInput.value);
-    //Append listItem to incompleteTasksHolder
-    incompleteTasksHolder.appendChild(listItem);
-    bindTaskEvents(listItem, taskCompleted);
+    if (taskInput.value !== "") {
+      //Append listItem to incompleteTasksHolder
+      incompleteTasksHolder.appendChild(listItem);
+      bindTaskEvents(listItem, taskCompleted);
+    }
 
     taskInput.value = "";
     };
