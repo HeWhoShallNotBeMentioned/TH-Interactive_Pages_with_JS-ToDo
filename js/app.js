@@ -4,8 +4,11 @@ var taskInput = document.getElementById("new-task");//add new ask
 var addButton = document.getElementsByTagName("button")[0];//first button
 var incompleteTasksHolder = document.getElementById("incomplete-tasks");//incomplete-tasks
 var completedTasksHolder = document.getElementById("completed-tasks");//completed-tasks
+//edit button
+var editButton = document.createElement("button");
 
-var createNewTaskElement= function(taskString) {
+
+ var createNewTaskElement= function(taskString) {
   var listItem = document.createElement("li");
   //input check box
   var checkBox = document.createElement("input");
@@ -13,8 +16,6 @@ var createNewTaskElement= function(taskString) {
   var label = document.createElement("label");
   //text input
   var editInput = document.createElement("input");
-  //edit button
-  var editButton = document.createElement("button");
   //delete button
   var deleteButton = document.createElement("button");
   //each element needs modifying
@@ -60,15 +61,20 @@ var editTask = function() {
   var editInput = listItem.querySelector("input[type=text]");
   var label = listItem.querySelector("label");
     //if the parent has the class .editMode
-    var containsClass = listItem.classList.contains('editMode');
+  var containsClass = listItem.classList.contains('editMode');
+  var button = listItem.querySelector("button.edit");
+  console.log(button.innerText = "Edit");
     if(containsClass) {
       //switch from .editMode
       //label text to become input's value
       label.innerText = editInput.value;
+      button.innerText = "Edit";
     } else{
       //switch to .editMode
       //input value becomes label's text
+      console.log(editButton.innerText = "Save");
       editInput.value = label.innerText;
+      button.innerText = "Save";
     }
 
     //toggle .editMode
@@ -122,12 +128,14 @@ var bindTaskEvents = function(taskListItem, checkBoxEventHandler){
 //dummy function to show
 var ajaxRequest = function(){
   console.log("AJAX Request");
+  editButton.innerHTML = "Save";
 };
 
 
 //Set the click handler to the addTask function
 addButton.addEventListener("click", addTask);
-addButton.addEventListener("click", ajaxRequest);
+editButton.addEventListener("click", ajaxRequest);
+
 //cycle over incompleteTaskHolder ul list items
 for(var i = 0; i < incompleteTasksHolder.children.length; i++) {
     //bind events to list item's children (taskCompleted)
